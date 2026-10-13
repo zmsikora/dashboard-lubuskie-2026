@@ -1,0 +1,1158 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard społeczno-gospodarczy – województwo lubuskie, II kw. 2026</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap">
+<style>
+
+body{margin:0;background:#F7F9FC}
+a{color:#0B3D91}a:hover{color:#072a66}
+.ml{display:none;font-size:11.5px;font-weight:500;color:#536077;margin-bottom:2px}
+@media (max-width: 720px){
+.thead{display:none !important}
+.trow{grid-template-columns:1fr 1fr !important;gap:10px 14px !important}
+.trow > :first-child{grid-column:1 / -1}
+.tmin{min-width:0 !important}
+.ml{display:block !important}
+}
+
+</style>
+</head>
+<body>
+<div id="app"></div>
+<template id="t-Main.dc.html">
+
+<div style="min-height: 100vh; background: #F7F9FC; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #1B2433; font-variant-numeric: tabular-nums">
+
+<header style="background: #0B3D91; color: #FFFFFF">
+<div style="max-width: 1280px; margin: 0 auto; padding: 28px clamp(16px, 4vw, 40px) 24px; display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; align-items: flex-end">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 13px; font-weight: 500; letter-spacing: 0.04em; color: #CFDBF3">DASHBOARD SPOŁECZNO-GOSPODARCZY</span>
+<h1 style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 600; font-size: clamp(30px, 8vw, 44px); line-height: 1.1">Województwo lubuskie</h1>
+<span style="font-size: 15px; color: #E3EBF9">Stan na II kwartał 2026 r. · Biuletyn statystyczny województwa lubuskiego (GUS)</span>
+</div>
+<nav style="display: flex; flex-wrap: wrap; gap: 8px">
+<a href="Main.dc.html" style="padding: 10px 16px; border-radius: 8px; background: #FFFFFF; color: #0B3D91; text-decoration: none; font-size: 14px; font-weight: 600">Panel zarządczy</a>
+<a href="Moduly.dc.html" style="padding: 10px 16px; border-radius: 8px; border: 1px solid #7F9CD6; color: #FFFFFF; text-decoration: none; font-size: 14px; font-weight: 500">Moduły szczegółowe</a>
+<a href="Napedy.dc.html" style="padding: 10px 16px; border-radius: 8px; border: 1px solid #7F9CD6; color: #FFFFFF; text-decoration: none; font-size: 14px; font-weight: 500">Napędy, alerty, powiaty</a>
+</nav>
+</div>
+</header>
+
+<main style="max-width: 1280px; margin: 0 auto; padding: 24px clamp(16px, 4vw, 40px) 56px; display: flex; flex-direction: column; gap: 32px">
+
+<section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: 20px">
+
+<div style="background: #FFFFFF; border: 1px solid #DDE3EE; border-radius: 10px; padding: clamp(16px, 4vw, 24px); display: flex; flex-direction: column; gap: 18px">
+<h2 style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 600; font-size: 24px">Indeks rozwoju województwa</h2>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 20px">
+<span style="font-family: 'Newsreader', Georgia, serif; font-weight: 600; font-size: clamp(68px, 20vw, 96px); line-height: 1">{{index.value}}</span>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span style="display: inline-flex; align-items: center; gap: 8px; align-self: flex-start; padding: 5px 14px; border-radius: 999px; background: {{index.bg}}; color: {{index.tx}}; font-size: 14px; font-weight: 600"><span style="width: 10px; height: 10px; border-radius: 50%; background: {{index.fill}}"></span>{{index.arrow}} {{index.label}}</span>
+<span style="font-size: 14px; color: #536077; max-width: 300px; line-height: 1.45">Skala 0–100, wartość 50 = brak zmian względem roku poprzedniego. Syntetyczny wskaźnik z 12 zmiennych.</span>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="position: relative; height: 14px; display: flex; gap: 2px">
+<div style="flex: 40 1 0; background: #D93025; border-radius: 7px 0 0 7px"></div>
+<div style="flex: 20 1 0; background: #F4B400"></div>
+<div style="flex: 40 1 0; background: #2E8B57; border-radius: 0 7px 7px 0"></div>
+<div style="position: absolute; top: -5px; left: {{index.pos}}%; width: 4px; height: 24px; margin-left: -2px; background: #1B2433; border-radius: 2px"></div>
+</div>
+<div style="display: flex; justify-content: space-between; font-size: 12px; color: #536077"><span>0 · regres</span><span>40</span><span>60</span><span>100 · rozwój</span></div>
+</div>
+<p style="margin: 0; font-size: 13px; line-height: 1.5; color: #536077">Metoda: dla każdej zmiennej zmiana r/r dzielona przez próg istotności (np. ±1% ludności, ±3% liczby firm), obcięta do [−1; +1] i uśredniona; kierunek uwzględnia sens zjawiska (wzrost bezrobocia obniża indeks). Progi są założeniem roboczym.</p>
+</div>
+
+<div style="background: #FFFFFF; border: 1px solid #DDE3EE; border-radius: 10px; padding: clamp(16px, 4vw, 24px); display: flex; flex-direction: column; gap: 18px">
+<h2 style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 600; font-size: 24px">Mapa sygnałów</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 14px">
+<sc-for list="{{signalCols}}" as="col" hint-placeholder-count="3">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="display: inline-flex; align-items: center; gap: 8px; align-self: flex-start; padding: 4px 12px; border-radius: 999px; background: {{col.bg}}; color: {{col.tx}}; font-size: 13px; font-weight: 600"><span style="width: 9px; height: 9px; border-radius: 50%; background: {{col.fill}}"></span>{{col.arrow}} {{col.title}}</span>
+<sc-for list="{{col.items}}" as="a" hint-placeholder-count="2">
+<div style="border-top: 1px solid #DDE3EE; padding-top: 10px; display: flex; flex-direction: column; gap: 3px">
+<div style="display: flex; justify-content: space-between; gap: 8px; font-size: 14px; font-weight: 600"><span>{{a.name}}</span><span style="color: {{col.tx}}">{{a.score}}</span></div>
+<span style="font-size: 12.5px; line-height: 1.4; color: #536077">{{a.drv}}</span>
+</div>
+</sc-for>
+</div>
+</sc-for>
+</div>
+</div>
+
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px">
+<h2 style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 600; font-size: 28px">Co dzieje się w regionie?</h2>
+<span style="font-size: 13px; color: #536077">Zmiany: kw./kw. i r/r (wskaźniki stanu: czerwiec vs marzec i czerwiec 2025; przepływy: II kw. vs I kw. i II kw. 2025)</span>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 16px">
+<sc-for list="{{tiles}}" as="t" hint-placeholder-count="8">
+<article style="background: #FFFFFF; border: 1px solid #DDE3EE; border-radius: 10px; padding: 20px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 8px">
+<span style="font-size: 13px; color: #536077; font-weight: 500">{{t.area}}</span>
+<span style="display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 999px; background: {{t.bg}}; color: {{t.tx}}; font-size: 12px; font-weight: 600"><span style="width: 8px; height: 8px; border-radius: 50%; background: {{t.fill}}"></span>{{t.arrow}} {{t.label}}</span>
+</div>
+<div style="font-size: 14px; font-weight: 600">{{t.name}}</div>
+<div style="display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap"><span style="font-family: 'Newsreader', Georgia, serif; font-weight: 600; font-size: 40px; line-height: 1">{{t.value}}</span><span style="font-size: 13px; color: #536077">{{t.unit}}</span></div>
+<div style="display: flex; gap: 20px; font-size: 13px">
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="color: #536077">{{t.d1l}}</span><span style="font-weight: 600; color: {{t.d1c}}">{{t.d1}}</span></div>
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="color: #536077">{{t.d2l}}</span><span style="font-weight: 600; color: {{t.d2c}}">{{t.d2}}</span></div>
+</div>
+<sc-if value="{{t.hasSpark}}" hint-placeholder-val="{{ true }}">
+<div style="position: relative; height: 34px">
+<svg viewBox="0 0 100 100" preserveAspectRatio="none" style="width: 100%; height: 100%; display: block" aria-hidden="true"><polyline points="{{t.spark}}" fill="none" stroke="#0B3D91" stroke-width="2" vector-effect="non-scaling-stroke"></polyline></svg>
+<div style="position: absolute; right: 0; top: {{t.endTop}}%; width: 8px; height: 8px; margin: -4px -4px 0 0; border-radius: 50%; background: #0B3D91; border: 2px solid #FFFFFF; box-sizing: content-box"></div>
+</div>
+<span style="font-size: 11.5px; color: #536077; margin-top: -6px">ostatnie 18 miesięcy</span>
+</sc-if>
+<span style="font-size: 12.5px; line-height: 1.45; color: #536077">{{t.note}}</span>
+</article>
+</sc-for>
+</div>
+</section>
+
+<section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: 20px">
+<div style="background: #FFFFFF; border: 1px solid #DDE3EE; border-radius: 10px; padding: clamp(16px, 4vw, 24px); display: flex; flex-direction: column; gap: 12px">
+<h2 style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 600; font-size: 24px">Komentarz automatyczny</h2>
+<p style="margin: 0; font-size: 16px; line-height: 1.6">W II kwartale 2026 r. liczba podmiotów REGON wzrosła o 0,4% kw./kw. (+1,5% r/r), a przeciętne wynagrodzenie w czerwcu było o 5,9% wyższe niż przed rokiem. Jednocześnie stopa bezrobocia rejestrowanego wzrosła r/r o 1,2 pp do 6,0%, a liczba ludności (koniec 2025 r.) spadła o 0,6%. Sugeruje to utrzymującą się aktywność gospodarczą pomimo niekorzystnych trendów demograficznych i słabnącego rynku pracy.</p>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #DDE3EE; border-radius: 10px; padding: clamp(16px, 4vw, 24px); display: flex; flex-direction: column; gap: 12px">
+<h2 style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 600; font-size: 24px">Poza zakresem biuletynu</h2>
+<p style="margin: 0; font-size: 14px; line-height: 1.55; color: #536077">Cztery kafle z koncepcji dashboardu nie mają danych w tym biuletynie, więc nie są pokazane, zamiast uzupełniać je szacunkami:</p>
+<ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; font-size: 14px; line-height: 1.5">
+<li><strong>Saldo migracji</strong> – do podpięcia z Banku Danych Lokalnych GUS</li>
+<li><strong>Liczba studentów</strong> – BDL GUS</li>
+<li><strong>Liczba lekarzy</strong> – BDL GUS</li>
+<li><strong>Jakość powietrza</strong> – dane GIOŚ</li>
+</ul>
+</div>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 14px">
+<h2 style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 600; font-size: 28px">Stan → Trend → Przyczyna → Skutek → Wniosek</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 12px">
+<sc-for list="{{chain}}" as="c" hint-placeholder-count="5">
+<div style="background: #FFFFFF; border: 1px solid #DDE3EE; border-top: 4px solid {{c.color}}; border-radius: 10px; padding: 18px; display: flex; flex-direction: column; gap: 8px">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; color: #0B3D91">{{c.step}}</span>
+<span style="font-family: 'Newsreader', Georgia, serif; font-weight: 600; font-size: 22px; line-height: 1.2">{{c.head}}</span>
+<span style="font-size: 13.5px; line-height: 1.5; color: #3B4658">{{c.text}}</span>
+</div>
+</sc-for>
+</div>
+</section>
+
+</main>
+</div>
+</template>
+<template id="t-Moduly.dc.html">
+
+<div style="min-height: 100vh; background: #F7F9FC; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #1B2433; font-variant-numeric: tabular-nums">
+
+<header style="background: #0B3D91; color: #FFFFFF">
+<div style="max-width: 1280px; margin: 0 auto; padding: 28px clamp(16px, 4vw, 40px) 24px; display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; align-items: flex-end">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 13px; font-weight: 500; letter-spacing: 0.04em; color: #CFDBF3">DASHBOARD SPOŁECZNO-GOSPODARCZY</span>
+<h1 style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 600; font-size: clamp(30px, 8vw, 44px); line-height: 1.1">Moduły szczegółowe</h1>
+<span style="font-size: 15px; color: #E3EBF9">Województwo lubuskie · II kwartał 2026 r.</span>
+</div>
+<nav style="display: flex; flex-wrap: wrap; gap: 8px">
+<a href="Main.dc.html" style="padding: 10px 16px; border-radius: 8px; border: 1px solid #7F9CD6; color: #FFFFFF; text-decoration: none; font-size: 14px; font-weight: 500">Panel zarządczy</a>
+<a href="Moduly.dc.html" style="padding: 10px 16px; border-radius: 8px; background: #FFFFFF; color: #0B3D91; text-decoration: none; font-size: 14px; font-weight: 600">Moduły szczegółowe</a>
+<a href="Napedy.dc.html" style="padding: 10px 16px; border-radius: 8px; border: 1px solid #7F9CD6; color: #FFFFFF; text-decoration: none; font-size: 14px; font-weight: 500">Napędy, alerty, powiaty</a>
+</nav>
+</div>
+</header>
+
+<main style="max-width: 1280px; margin: 0 auto; padding: 20px clamp(16px, 4vw, 40px) 56px; display: flex; flex-direction: column; gap: 28px">
+
+<nav aria-label="Skok do modułu" style="display: flex; flex-wrap: wrap; gap: 8px; font-size: 14px">
+<a href="#dem" style="padding: 8px 14px; border-radius: 999px; background: #FFFFFF; border: 1px solid #DDE3EE; text-decoration: none; font-weight: 500">Demografia</a>
+<a href="#lab" style="padding: 8px 14px; border-radius: 999px; background: #FFFFFF; border: 1px solid #DDE3EE; text-decoration: none; font-weight: 500">Rynek pracy</a>
+<a href="#eco" style="padding: 8px 14px; border-radius: 999px; background: #FFFFFF; border: 1px solid #DDE3EE; text-decoration: none; font-weight: 500">Gospodarka</a>
+<a href="#ind" style="padding: 8px 14px; border-radius: 999px; background: #FFFFFF; border: 1px solid #DDE3EE; text-decoration: none; font-weight: 500">Przemysł</a>
+<a href="#bld" style="padding: 8px 14px; border-radius: 999px; background: #FFFFFF; border: 1px solid #DDE3EE; text-decoration: none; font-weight: 500">Budownictwo i mieszkalnictwo</a>
+<a href="#gap" style="padding: 8px 14px; border-radius: 999px; background: #FFFFFF; border: 1px solid #DDE3EE; text-decoration: none; font-weight: 500">Edukacja, zdrowie, środowisko</a>
+</nav>
+
+<!-- ============ DEMOGRAFIA ============ -->
+<section id="dem" style="background: #FFFFFF; border: 1px solid #DDE3EE; border-radius: 10px; padding: clamp(16px, 4vw, 28px); display: flex; flex-direction: column; gap: 22px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px">
+<h2 style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 600; font-size: 30px">Demografia</h2>
+<span style="font-size: 13px; color: #536077">Dane za 2025 r. (ludność wg stanu 31 XII)</span>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(520px, 100%), 1fr)); gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 22px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr)); gap: 14px">
+<sc-for list="{{dem.stats}}" as="s" hint-placeholder-count="6">
+<div style="background: #F7F9FC; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 12.5px; color: #536077">{{s.label}}</span>
+<span style="font-family: 'Newsreader', Georgia, serif; font-weight: 600; font-size: clamp(20px, 5.5vw, 26px); line-height: 1.15">{{s.value}}</span>
+<span style="font-size: 12.5px; line-height: 1.4; font-weight: 500; color: {{s.color}}">{{s.sub}}</span>
+</div>
+</sc-for>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<h3 style="margin: 0; font-size: 15px; font-weight: 600">Powiązania</h3>
+<sc-for list="{{dem.links}}" as="l" hint-placeholder-count="3">
+<div style="border-top: 1px solid #DDE3EE; padding-top: 10px; display: flex; flex-direction: column; gap: 3px">
+<span style="font-size: 14px; font-weight: 600; color: #0B3D91">{{l.head}}</span>
+<span style="font-size: 13.5px; line-height: 1.5; color: #3B4658">{{l.text}}</span>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 26px">
+<sc-for list="{{dem.lines}}" as="c" hint-placeholder-count="1">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-wrap: wrap"><span style="font-size: 15px; font-weight: 600">{{c.title}}</span><span style="font-size: 12.5px; color: #536077">{{c.unit}}</span></div>
+<div style="display: flex; gap: 8px">
+<div style="position: relative; width: 44px; height: 200px; flex: none">
+<sc-for list="{{c.grid}}" as="g" hint-placeholder-count="4"><span style="position: absolute; right: 0; top: {{g.top}}%; transform: translateY(-50%); font-size: 11.5px; color: #536077">{{g.label}}</span></sc-for>
+</div>
+<div style="position: relative; flex: 1; height: 200px; min-width: 0">
+<sc-for list="{{c.grid}}" as="g" hint-placeholder-count="4"><div style="position: absolute; left: 0; right: 0; top: {{g.top}}%; border-top: 1px solid #E6EAF2"></div></sc-for>
+<svg viewBox="0 0 100 100" preserveAspectRatio="none" style="position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible" aria-hidden="true">
+<polyline points="{{c.points}}" fill="none" stroke="#0B3D91" stroke-width="2.5" stroke-linejoin="round" vector-effect="non-scaling-stroke"></polyline>
+<polyline points="{{c.extPoints}}" fill="none" stroke="#0B3D91" stroke-width="2" stroke-dasharray="5 5" vector-effect="non-scaling-stroke"></polyline>
+</svg>
+<sc-for list="{{c.dots}}" as="d" hint-placeholder-count="4"><div title="{{d.tip}}" style="position: absolute; left: {{d.left}}%; top: {{d.top}}%; width: 10px; height: 10px; margin: -5px 0 0 -5px; border-radius: 50%; background: {{d.fill}}; border: 2px solid #FFFFFF; box-sizing: content-box"></div></sc-for>
+<sc-for list="{{c.dotLabels}}" as="d" hint-placeholder-count="4"><span style="position: absolute; left: {{d.left}}%; top: {{d.top}}%; transform: translate(-50%, -22px); font-size: 12px; font-weight: 600; white-space: nowrap">{{d.label}}</span></sc-for>
+<div style="position: absolute; inset: 0; display: flex">
+<sc-for list="{{c.hits}}" as="h" hint-placeholder-count="4"><div title="{{h.tip}}" style="flex: 1 1 0; height: 100%"></div></sc-for>
+</div>
+<sc-if value="{{c.hasEnd}}" hint-placeholder-val="{{ true }}">
+<div style="position: absolute; left: 100%; top: {{c.endTop}}%; width: 10px; height: 10px; margin: -5px -5px 0 0; border-radius: 50%; background: #0B3D91; border: 2px solid #FFFFFF; box-sizing: content-box"></div>
+<span style="position: absolute; right: 0; top: {{c.endTop}}%; transform: translateY(-26px); font-size: 12.5px; font-weight: 600">{{c.endLabel}}</span>
+</sc-if>
+</div>
+</div>
+<div style="position: relative; height: 16px; margin-left: 52px">
+<sc-for list="{{c.xt}}" as="x" hint-placeholder-count="4"><span style="position: absolute; left: {{x.left}}%; transform: translateX(-50%); font-size: 11.5px; color: #536077; white-space: nowrap">{{x.label}}</span></sc-for>
+</div>
+<span style="font-size: 12.5px; line-height: 1.45; color: #536077">{{c.note}}</span>
+</div>
+</sc-for>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-wrap: wrap"><span style="font-size: 15px; font-weight: 600">Struktura ludności według wieku</span><span style="font-size: 12.5px; color: #536077">% ludności, 31 XII 2025</span></div>
+<div style="display: flex; gap: 2px; height: 34px">
+<sc-for list="{{dem.age}}" as="a" hint-placeholder-count="3"><div title="{{a.tip}}" style="flex: {{a.share}} 1 0; background: {{a.fill}}; display: flex; align-items: center; justify-content: center; color: #FFFFFF; font-size: 13px; font-weight: 600; min-width: 0">{{a.pct}}</div></sc-for>
+</div>
+<div style="display: flex; gap: 2px; font-size: 12.5px; color: #3B4658">
+<sc-for list="{{dem.age}}" as="a" hint-placeholder-count="3"><div style="flex: {{a.share}} 1 0; min-width: 0; line-height: 1.35">{{a.name}}</div></sc-for>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ============ RYNEK PRACY ============ -->
+<section id="lab" style="background: #FFFFFF; border: 1px solid #DDE3EE; border-radius: 10px; padding: clamp(16px, 4vw, 28px); display: flex; flex-direction: column; gap: 22px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px">
+<h2 style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 600; font-size: 30px">Rynek pracy</h2>
+<span style="font-size: 13px; color: #536077">Stan na koniec czerwca 2026 r.</span>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(520px, 100%), 1fr)); gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 22px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr)); gap: 14px">
+<sc-for list="{{lab.stats}}" as="s" hint-placeholder-count="6">
+<div style="background: #F7F9FC; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 12.5px; color: #536077">{{s.label}}</span>
+<span style="font-family: 'Newsreader', Georgia, serif; font-weight: 600; font-size: clamp(20px, 5.5vw, 26px); line-height: 1.15">{{s.value}}</span>
+<span style="font-size: 12.5px; line-height: 1.4; font-weight: 500; color: {{s.color}}">{{s.sub}}</span>
+</div>
+</sc-for>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<h3 style="margin: 0; font-size: 15px; font-weight: 600">Powiązania</h3>
+<sc-for list="{{lab.links}}" as="l" hint-placeholder-count="3">
+<div style="border-top: 1px solid #DDE3EE; padding-top: 10px; display: flex; flex-direction: column; gap: 3px">
+<span style="font-size: 14px; font-weight: 600; color: #0B3D91">{{l.head}}</span>
+<span style="font-size: 13.5px; line-height: 1.5; color: #3B4658">{{l.text}}</span>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 26px">
+<sc-for list="{{lab.lines}}" as="c" hint-placeholder-count="2">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-wrap: wrap"><span style="font-size: 15px; font-weight: 600">{{c.title}}</span><span style="font-size: 12.5px; color: #536077">{{c.unit}}</span></div>
+<div style="display: flex; gap: 8px">
+<div style="position: relative; width: 44px; height: 200px; flex: none">
+<sc-for list="{{c.grid}}" as="g" hint-placeholder-count="4"><span style="position: absolute; right: 0; top: {{g.top}}%; transform: translateY(-50%); font-size: 11.5px; color: #536077">{{g.label}}</span></sc-for>
+</div>
+<div style="position: relative; flex: 1; height: 200px; min-width: 0">
+<sc-for list="{{c.grid}}" as="g" hint-placeholder-count="4"><div style="position: absolute; left: 0; right: 0; top: {{g.top}}%; border-top: 1px solid #E6EAF2"></div></sc-for>
+<svg viewBox="0 0 100 100" preserveAspectRatio="none" style="position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible" aria-hidden="true">
+<polyline points="{{c.points}}" fill="none" stroke="#0B3D91" stroke-width="2.5" stroke-linejoin="round" vector-effect="non-scaling-stroke"></polyline>
+</svg>
+<div style="position: absolute; inset: 0; display: flex">
+<sc-for list="{{c.hits}}" as="h" hint-placeholder-count="12"><div title="{{h.tip}}" style="flex: 1 1 0; height: 100%"></div></sc-for>
+</div>
+<div style="position: absolute; left: 100%; top: {{c.endTop}}%; width: 10px; height: 10px; margin: -5px -5px 0 0; border-radius: 50%; background: #0B3D91; border: 2px solid #FFFFFF; box-sizing: content-box"></div>
+<span style="position: absolute; right: 0; top: {{c.endTop}}%; transform: translateY(-26px); font-size: 12.5px; font-weight: 600">{{c.endLabel}}</span>
+</div>
+</div>
+<div style="position: relative; height: 16px; margin-left: 52px">
+<sc-for list="{{c.xt}}" as="x" hint-placeholder-count="4"><span style="position: absolute; left: {{x.left}}%; transform: translateX(-50%); font-size: 11.5px; color: #536077; white-space: nowrap">{{x.label}}</span></sc-for>
+</div>
+<span style="font-size: 12.5px; line-height: 1.45; color: #536077">{{c.note}}</span>
+</div>
+</sc-for>
+</div>
+</div>
+</section>
+
+<!-- ============ GOSPODARKA ============ -->
+<section id="eco" style="background: #FFFFFF; border: 1px solid #DDE3EE; border-radius: 10px; padding: clamp(16px, 4vw, 28px); display: flex; flex-direction: column; gap: 22px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px">
+<h2 style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 600; font-size: 30px">Gospodarka</h2>
+<span style="font-size: 13px; color: #536077">REGON: 30 VI 2026 · inwestycje i finanse: I–VI 2026</span>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(520px, 100%), 1fr)); gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 22px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr)); gap: 14px">
+<sc-for list="{{eco.stats}}" as="s" hint-placeholder-count="6">
+<div style="background: #F7F9FC; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 12.5px; color: #536077">{{s.label}}</span>
+<span style="font-family: 'Newsreader', Georgia, serif; font-weight: 600; font-size: clamp(20px, 5.5vw, 26px); line-height: 1.15">{{s.value}}</span>
+<span style="font-size: 12.5px; line-height: 1.4; font-weight: 500; color: {{s.color}}">{{s.sub}}</span>
+</div>
+</sc-for>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<h3 style="margin: 0; font-size: 15px; font-weight: 600">Powiązania</h3>
+<sc-for list="{{eco.links}}" as="l" hint-placeholder-count="3">
+<div style="border-top: 1px solid #DDE3EE; padding-top: 10px; display: flex; flex-direction: column; gap: 3px">
+<span style="font-size: 14px; font-weight: 600; color: #0B3D91">{{l.head}}</span>
+<span style="font-size: 13.5px; line-height: 1.5; color: #3B4658">{{l.text}}</span>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 26px">
+<sc-for list="{{eco.lines}}" as="c" hint-placeholder-count="1">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-wrap: wrap"><span style="font-size: 15px; font-weight: 600">{{c.title}}</span><span style="font-size: 12.5px; color: #536077">{{c.unit}}</span></div>
+<div style="display: flex; gap: 8px">
+<div style="position: relative; width: 44px; height: 200px; flex: none">
+<sc-for list="{{c.grid}}" as="g" hint-placeholder-count="4"><span style="position: absolute; right: 0; top: {{g.top}}%; transform: translateY(-50%); font-size: 11.5px; color: #536077">{{g.label}}</span></sc-for>
+</div>
+<div style="position: relative; flex: 1; height: 200px; min-width: 0">
+<sc-for list="{{c.grid}}" as="g" hint-placeholder-count="4"><div style="position: absolute; left: 0; right: 0; top: {{g.top}}%; border-top: 1px solid #E6EAF2"></div></sc-for>
+<svg viewBox="0 0 100 100" preserveAspectRatio="none" style="position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible" aria-hidden="true">
+<polyline points="{{c.points}}" fill="none" stroke="#0B3D91" stroke-width="2.5" stroke-linejoin="round" vector-effect="non-scaling-stroke"></polyline>
+</svg>
+<div style="position: absolute; inset: 0; display: flex">
+<sc-for list="{{c.hits}}" as="h" hint-placeholder-count="12"><div title="{{h.tip}}" style="flex: 1 1 0; height: 100%"></div></sc-for>
+</div>
+<div style="position: absolute; left: 100%; top: {{c.endTop}}%; width: 10px; height: 10px; margin: -5px -5px 0 0; border-radius: 50%; background: #0B3D91; border: 2px solid #FFFFFF; box-sizing: content-box"></div>
+<span style="position: absolute; right: 0; top: {{c.endTop}}%; transform: translateY(-26px); font-size: 12.5px; font-weight: 600">{{c.endLabel}}</span>
+</div>
+</div>
+<div style="position: relative; height: 16px; margin-left: 52px">
+<sc-for list="{{c.xt}}" as="x" hint-placeholder-count="4"><span style="position: absolute; left: {{x.left}}%; transform: translateX(-50%); font-size: 11.5px; color: #536077; white-space: nowrap">{{x.label}}</span></sc-for>
+</div>
+<span style="font-size: 12.5px; line-height: 1.45; color: #536077">{{c.note}}</span>
+</div>
+</sc-for>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-wrap: wrap"><span style="font-size: 15px; font-weight: 600">Zmiana liczby podmiotów wg sekcji</span><span style="font-size: 12.5px; color: #536077">30 VI 2026 vs 31 XII 2025</span></div>
+<div style="display: flex; flex-direction: column; gap: 3px">
+<sc-for list="{{eco.sections}}" as="r" hint-placeholder-count="16">
+<div title="{{r.tip}}" style="display: flex; align-items: center; gap: 10px; font-size: 12.5px">
+<span style="width: clamp(90px, 28vw, 190px); flex: none; text-align: right; overflow-wrap: anywhere; color: #3B4658">{{r.name}}</span>
+<div style="position: relative; flex: 1; height: 16px; min-width: 0">
+<div style="position: absolute; left: 50%; top: 0; bottom: 0; border-left: 1px solid #8793A8"></div>
+<div style="position: absolute; left: {{r.left}}%; width: {{r.w}}%; top: 2px; bottom: 2px; background: {{r.fill}}; border-radius: 2px"></div>
+</div>
+<span style="width: 44px; flex: none; font-weight: 600; color: {{r.tx}}">{{r.label}}</span>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ============ PRZEMYSŁ ============ -->
+<section id="ind" style="background: #FFFFFF; border: 1px solid #DDE3EE; border-radius: 10px; padding: clamp(16px, 4vw, 28px); display: flex; flex-direction: column; gap: 22px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px">
+<h2 style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 600; font-size: 30px">Przemysł</h2>
+<span style="font-size: 13px; color: #536077">I–VI 2026 · ceny bieżące</span>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(520px, 100%), 1fr)); gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 22px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr)); gap: 14px">
+<sc-for list="{{ind.stats}}" as="s" hint-placeholder-count="6">
+<div style="background: #F7F9FC; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 12.5px; color: #536077">{{s.label}}</span>
+<span style="font-family: 'Newsreader', Georgia, serif; font-weight: 600; font-size: clamp(20px, 5.5vw, 26px); line-height: 1.15">{{s.value}}</span>
+<span style="font-size: 12.5px; line-height: 1.4; font-weight: 500; color: {{s.color}}">{{s.sub}}</span>
+</div>
+</sc-for>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<h3 style="margin: 0; font-size: 15px; font-weight: 600">Powiązania</h3>
+<sc-for list="{{ind.links}}" as="l" hint-placeholder-count="3">
+<div style="border-top: 1px solid #DDE3EE; padding-top: 10px; display: flex; flex-direction: column; gap: 3px">
+<span style="font-size: 14px; font-weight: 600; color: #0B3D91">{{l.head}}</span>
+<span style="font-size: 13.5px; line-height: 1.5; color: #3B4658">{{l.text}}</span>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 26px">
+<sc-for list="{{ind.bars}}" as="c" hint-placeholder-count="1">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-wrap: wrap"><span style="font-size: 15px; font-weight: 600">{{c.title}}</span><span style="font-size: 12.5px; color: #536077">{{c.unit}}</span></div>
+<div style="display: flex; gap: 8px">
+<div style="position: relative; width: 44px; height: 200px; flex: none">
+<sc-for list="{{c.grid}}" as="g" hint-placeholder-count="4"><span style="position: absolute; right: 0; top: {{g.top}}%; transform: translateY(-50%); font-size: 11.5px; color: #536077">{{g.label}}</span></sc-for>
+</div>
+<div style="position: relative; flex: 1; height: 200px; min-width: 0">
+<sc-for list="{{c.grid}}" as="g" hint-placeholder-count="4"><div style="position: absolute; left: 0; right: 0; top: {{g.top}}%; border-top: 1px solid #E6EAF2"></div></sc-for>
+<div style="position: absolute; left: 0; right: 0; top: {{c.baseTop}}%; border-top: 1.5px solid #536077"></div>
+<sc-for list="{{c.bars}}" as="b" hint-placeholder-count="18"><div title="{{b.tip}}" style="position: absolute; left: {{b.left}}%; width: {{b.w}}%; bottom: {{b.bottom}}%; height: {{b.h}}%; background: {{b.fill}}; border-radius: 2px"></div></sc-for>
+</div>
+</div>
+<div style="position: relative; height: 16px; margin-left: 52px">
+<sc-for list="{{c.xt}}" as="x" hint-placeholder-count="3"><span style="position: absolute; left: {{x.left}}%; transform: translateX(-50%); font-size: 11.5px; color: #536077; white-space: nowrap">{{x.label}}</span></sc-for>
+</div>
+<span style="font-size: 12.5px; line-height: 1.45; color: #536077">{{c.note}}</span>
+</div>
+</sc-for>
+</div>
+</div>
+</section>
+
+<!-- ============ BUDOWNICTWO ============ -->
+<section id="bld" style="background: #FFFFFF; border: 1px solid #DDE3EE; border-radius: 10px; padding: clamp(16px, 4vw, 28px); display: flex; flex-direction: column; gap: 22px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px">
+<h2 style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 600; font-size: 30px">Budownictwo i mieszkalnictwo</h2>
+<span style="font-size: 13px; color: #536077">I–VI 2026 · produkcja budowlano-montażowa w cenach bieżących</span>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(520px, 100%), 1fr)); gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 22px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr)); gap: 14px">
+<sc-for list="{{bld.stats}}" as="s" hint-placeholder-count="6">
+<div style="background: #F7F9FC; border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 12.5px; color: #536077">{{s.label}}</span>
+<span style="font-family: 'Newsreader', Georgia, serif; font-weight: 600; font-size: clamp(20px, 5.5vw, 26px); line-height: 1.15">{{s.value}}</span>
+<span style="font-size: 12.5px; line-height: 1.4; font-weight: 500; color: {{s.color}}">{{s.sub}}</span>
+</div>
+</sc-for>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<h3 style="margin: 0; font-size: 15px; font-weight: 600">Powiązania</h3>
+<sc-for list="{{bld.links}}" as="l" hint-placeholder-count="2">
+<div style="border-top: 1px solid #DDE3EE; padding-top: 10px; display: flex; flex-direction: column; gap: 3px">
+<span style="font-size: 14px; font-weight: 600; color: #0B3D91">{{l.head}}</span>
+<span style="font-size: 13.5px; line-height: 1.5; color: #3B4658">{{l.text}}</span>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 26px">
+<sc-for list="{{bld.bars}}" as="c" hint-placeholder-count="2">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-wrap: wrap"><span style="font-size: 15px; font-weight: 600">{{c.title}}</span><span style="font-size: 12.5px; color: #536077">{{c.unit}}</span></div>
+<div style="display: flex; gap: 8px">
+<div style="position: relative; width: 44px; height: 200px; flex: none">
+<sc-for list="{{c.grid}}" as="g" hint-placeholder-count="4"><span style="position: absolute; right: 0; top: {{g.top}}%; transform: translateY(-50%); font-size: 11.5px; color: #536077">{{g.label}}</span></sc-for>
+</div>
+<div style="position: relative; flex: 1; height: 200px; min-width: 0">
+<sc-for list="{{c.grid}}" as="g" hint-placeholder-count="4"><div style="position: absolute; left: 0; right: 0; top: {{g.top}}%; border-top: 1px solid #E6EAF2"></div></sc-for>
+<div style="position: absolute; left: 0; right: 0; top: {{c.baseTop}}%; border-top: 1.5px solid #536077"></div>
+<sc-for list="{{c.bars}}" as="b" hint-placeholder-count="18"><div title="{{b.tip}}" style="position: absolute; left: {{b.left}}%; width: {{b.w}}%; bottom: {{b.bottom}}%; height: {{b.h}}%; background: {{b.fill}}; border-radius: 2px"></div></sc-for>
+</div>
+</div>
+<div style="position: relative; height: 16px; margin-left: 52px">
+<sc-for list="{{c.xt}}" as="x" hint-placeholder-count="3"><span style="position: absolute; left: {{x.left}}%; transform: translateX(-50%); font-size: 11.5px; color: #536077; white-space: nowrap">{{x.label}}</span></sc-for>
+</div>
+<span style="font-size: 12.5px; line-height: 1.45; color: #536077">{{c.note}}</span>
+</div>
+</sc-for>
+</div>
+</div>
+</section>
+
+<!-- ============ LUKI ============ -->
+<section id="gap" style="background: #FFFFFF; border: 1px solid #DDE3EE; border-radius: 10px; padding: clamp(16px, 4vw, 28px); display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h2 style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 600; font-size: 30px">Edukacja, zdrowie, środowisko</h2>
+<p style="margin: 0; font-size: 14px; line-height: 1.55; color: #536077; max-width: 820px">Biuletyn nie zawiera wskaźników tych trzech modułów. Poniżej: co jest potrzebne i jedyne dane z biuletynu, które można do nich powiązać. Wykresy dodamy po podpięciu BDL GUS (i GIOŚ dla środowiska).</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 16px">
+<sc-for list="{{gaps}}" as="g" hint-placeholder-count="3">
+<div style="background: #F7F9FC; border-radius: 8px; padding: 18px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: 'Newsreader', Georgia, serif; font-weight: 600; font-size: 22px">{{g.name}}</span>
+<span style="font-size: 13px; line-height: 1.5; color: #536077"><strong style="color: #1B2433">Do podpięcia:</strong> {{g.need}}</span>
+<span style="font-size: 13px; line-height: 1.5; color: #3B4658"><strong>Z biuletynu:</strong> {{g.have}}</span>
+</div>
+</sc-for>
+</div>
+</section>
+
+</main>
+</div>
+</template>
+<template id="t-Napedy.dc.html">
+
+<div style="min-height: 100vh; background: #F7F9FC; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #1B2433; font-variant-numeric: tabular-nums">
+
+<header style="background: #0B3D91; color: #FFFFFF">
+<div style="max-width: 1280px; margin: 0 auto; padding: 28px clamp(16px, 4vw, 40px) 24px; display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; align-items: flex-end">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 13px; font-weight: 500; letter-spacing: 0.04em; color: #CFDBF3">DASHBOARD SPOŁECZNO-GOSPODARCZY</span>
+<h1 style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 600; font-size: clamp(30px, 8vw, 44px); line-height: 1.1">Co napędza rozwój?</h1>
+<span style="font-size: 15px; color: #E3EBF9">Napędy i bariery, system ostrzegania, powiaty · II kwartał 2026 r.</span>
+</div>
+<nav style="display: flex; flex-wrap: wrap; gap: 8px">
+<a href="Main.dc.html" style="padding: 10px 16px; border-radius: 8px; border: 1px solid #7F9CD6; color: #FFFFFF; text-decoration: none; font-size: 14px; font-weight: 500">Panel zarządczy</a>
+<a href="Moduly.dc.html" style="padding: 10px 16px; border-radius: 8px; border: 1px solid #7F9CD6; color: #FFFFFF; text-decoration: none; font-size: 14px; font-weight: 500">Moduły szczegółowe</a>
+<a href="Napedy.dc.html" style="padding: 10px 16px; border-radius: 8px; background: #FFFFFF; color: #0B3D91; text-decoration: none; font-size: 14px; font-weight: 600">Napędy, alerty, powiaty</a>
+</nav>
+</div>
+</header>
+
+<main style="max-width: 1280px; margin: 0 auto; padding: 24px clamp(16px, 4vw, 40px) 56px; display: flex; flex-direction: column; gap: 36px">
+
+<!-- ======= NAPĘDY I BARIERY ======= -->
+<section style="display: flex; flex-direction: column; gap: 16px">
+<h2 style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 600; font-size: 28px">Silniki wzrostu i bariery rozwoju</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(460px, 100%), 1fr)); gap: 20px">
+<sc-for list="{{drivers}}" as="d" hint-placeholder-count="2">
+<div style="background: #FFFFFF; border: 1px solid #DDE3EE; border-radius: 10px; padding: clamp(16px, 4vw, 24px); display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span style="display: inline-flex; align-items: center; gap: 8px; align-self: flex-start; padding: 5px 14px; border-radius: 999px; background: {{d.bg}}; color: {{d.tx}}; font-size: 14px; font-weight: 600"><span style="width: 10px; height: 10px; border-radius: 50%; background: {{d.fill}}"></span>{{d.arrow}} {{d.title}}</span>
+<span style="font-size: 14px; line-height: 1.5; color: #3B4658">{{d.rule}}</span>
+</div>
+<div style="display: flex; flex-direction: column">
+<sc-for list="{{d.items}}" as="i" hint-placeholder-count="4">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px; border-top: 1px solid #DDE3EE; padding: 11px 0">
+<div style="display: flex; flex-direction: column; gap: 2px; min-width: 0">
+<span style="font-size: 14.5px; font-weight: 600">{{i.name}}</span>
+<span style="font-size: 12.5px; color: #536077">{{i.sub}}</span>
+</div>
+<span style="font-family: 'Newsreader', Georgia, serif; font-weight: 600; font-size: 26px; white-space: nowrap; color: {{i.color}}">{{i.value}}</span>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-for>
+</div>
+</section>
+
+<!-- ======= RELACJE ======= -->
+<section style="background: #FFFFFF; border: 1px solid #DDE3EE; border-radius: 10px; padding: clamp(16px, 4vw, 28px); display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<h2 style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 600; font-size: 28px">Czy zależności się potwierdzają?</h2>
+<span style="font-size: 13.5px; color: #536077">Każda para zjawisk z koncepcji dashboardu, dla której biuletyn ma dane po obu stronach.</span>
+</div>
+<div style="overflow-x: auto">
+<div class="tmin" style="min-width: 760px; display: flex; flex-direction: column">
+<div class="thead" style="display: grid; grid-template-columns: 1.4fr 1fr 1fr 150px; gap: 16px; padding: 0 0 8px; font-size: 12.5px; font-weight: 600; color: #536077">
+<span>Relacja</span><span>Przyczyna (zmiana)</span><span>Skutek (zmiana)</span><span>Odczyt</span>
+</div>
+<sc-for list="{{relations}}" as="r" hint-placeholder-count="6">
+<div class="trow" style="display: grid; grid-template-columns: 1.4fr 1fr 1fr 150px; gap: 16px; padding: 12px 0; border-top: 1px solid #DDE3EE; align-items: center; font-size: 14px">
+<span style="font-weight: 600">{{r.rel}}</span>
+<div><span class="ml">Przyczyna</span><span>{{r.a}}</span></div>
+<div><span class="ml">Skutek</span><span>{{r.b}}</span></div>
+<span style="display: inline-flex; align-items: center; gap: 6px; align-self: center; justify-self: start; padding: 3px 10px; border-radius: 999px; background: {{r.bg}}; color: {{r.tx}}; font-size: 12.5px; font-weight: 600"><span style="width: 8px; height: 8px; border-radius: 50%; background: {{r.fill}}"></span>{{r.label}}</span>
+</div>
+</sc-for>
+</div>
+</div>
+</section>
+
+<!-- ======= ALERTY ======= -->
+<section style="display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px">
+<h2 style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 600; font-size: 28px">Wczesne ostrzeganie</h2>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{alertCounts}}" as="c" hint-placeholder-count="3">
+<span style="display: inline-flex; align-items: center; gap: 8px; padding: 5px 14px; border-radius: 999px; background: {{c.bg}}; color: {{c.tx}}; font-size: 14px; font-weight: 600"><span style="width: 10px; height: 10px; border-radius: 50%; background: {{c.fill}}"></span>{{c.n}} · {{c.label}}</span>
+</sc-for>
+</div>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #DDE3EE; border-radius: 10px; padding: 8px clamp(14px, 4vw, 24px) 16px; overflow-x: auto">
+<div class="tmin" style="min-width: 760px; display: flex; flex-direction: column">
+<div class="thead" style="display: grid; grid-template-columns: 1.5fr 1.1fr 1.3fr 150px; gap: 16px; padding: 14px 0 8px; font-size: 12.5px; font-weight: 600; color: #536077">
+<span>Wskaźnik</span><span>Reguła alarmu</span><span>Aktualnie</span><span>Status</span>
+</div>
+<sc-for list="{{alerts}}" as="a" hint-placeholder-count="6">
+<div class="trow" style="display: grid; grid-template-columns: 1.5fr 1.1fr 1.3fr 150px; gap: 16px; padding: 12px 0; border-top: 1px solid #DDE3EE; align-items: center; font-size: 14px">
+<span style="font-weight: 600">{{a.name}}</span>
+<div><span class="ml">Reguła alarmu</span><span>{{a.rule}}</span></div>
+<div><span class="ml">Aktualnie</span><span>{{a.now}}</span></div>
+<span style="display: inline-flex; align-items: center; gap: 6px; justify-self: start; padding: 3px 10px; border-radius: 999px; background: {{a.bg}}; color: {{a.tx}}; font-size: 12.5px; font-weight: 600"><span style="width: 8px; height: 8px; border-radius: 50%; background: {{a.fill}}"></span>{{a.label}}</span>
+</div>
+</sc-for>
+<p style="margin: 12px 0 0; font-size: 12.5px; line-height: 1.5; color: #536077">Alarm: próg przekroczony. Obserwacja: przekroczone co najmniej 50% progu w złym kierunku. Pierwsze cztery reguły pochodzą z koncepcji dashboardu, dwie ostatnie (budownictwo, zatrudnienie) są propozycją dodaną po lekturze biuletynu.</p>
+</div>
+</div>
+</section>
+
+<!-- ======= NA TLE KRAJU ======= -->
+<section style="background: #FFFFFF; border: 1px solid #DDE3EE; border-radius: 10px; padding: clamp(16px, 4vw, 28px); display: flex; flex-direction: column; gap: 16px">
+<h2 style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 600; font-size: 28px">Lubuskie na tle kraju</h2>
+<div style="overflow-x: auto">
+<div class="tmin" style="min-width: 640px; display: flex; flex-direction: column">
+<div class="thead" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1.3fr; gap: 16px; padding: 0 0 8px; font-size: 12.5px; font-weight: 600; color: #536077">
+<span>Wskaźnik</span><span>Lubuskie</span><span>Polska</span><span>Odczyt</span>
+</div>
+<sc-for list="{{vsPoland}}" as="r" hint-placeholder-count="6">
+<div class="trow" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1.3fr; gap: 16px; padding: 12px 0; border-top: 1px solid #DDE3EE; align-items: center; font-size: 14px">
+<span style="font-weight: 600">{{r.name}}</span>
+<div><span class="ml">Lubuskie</span><span style="font-family: 'Newsreader', Georgia, serif; font-weight: 600; font-size: 20px">{{r.lub}}</span></div>
+<div><span class="ml">Polska</span><span style="font-family: 'Newsreader', Georgia, serif; font-weight: 600; font-size: 20px; color: #536077">{{r.pl}}</span></div>
+<span style="font-weight: 600; color: {{r.color}}">{{r.read}}</span>
+</div>
+</sc-for>
+</div>
+</div>
+</section>
+
+<!-- ======= POWIATY ======= -->
+<section style="display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<h2 style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 600; font-size: 28px">Powiaty: gdzie jest najtrudniej</h2>
+<span style="font-size: 13.5px; color: #536077; max-width: 900px">Posortowane według stopy bezrobocia rejestrowanego (30 VI 2026). Punkt przy wartości pokazuje ocenę względem progu, a nie ranking.</span>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #DDE3EE; border-radius: 10px; padding: 8px clamp(14px, 4vw, 24px) 16px; overflow-x: auto">
+<div class="tmin" style="min-width: 820px; display: flex; flex-direction: column">
+<div class="thead" style="display: grid; grid-template-columns: 1.7fr 1fr 1fr 1.1fr 1.1fr 1.1fr; gap: 12px; padding: 14px 0 8px; font-size: 12.5px; font-weight: 600; color: #536077">
+<span>Powiat</span><span>Ludność 2025</span><span>Udział 65+</span><span>Przyrost naturalny 2025</span><span>Stopa bezrobocia VI 2026</span><span>Podmioty REGON r/r</span>
+</div>
+<sc-for list="{{powiaty}}" as="p" hint-placeholder-count="14">
+<div class="trow" style="display: grid; grid-template-columns: 1.7fr 1fr 1fr 1.1fr 1.1fr 1.1fr; gap: 12px; padding: 10px 0; border-top: 1px solid #DDE3EE; align-items: center; font-size: 14px">
+<span style="font-weight: 600">{{p.name}}</span>
+<div><span class="ml">Ludność 2025</span><span>{{p.pop}}</span></div>
+<div><span class="ml">Udział 65+</span><span style="display: inline-flex; align-items: center; gap: 8px"><span style="width: 9px; height: 9px; border-radius: 50%; background: {{p.s65.fill}}"></span>{{p.s65.text}}</span></div>
+<div><span class="ml">Przyrost naturalny 2025</span><span style="display: inline-flex; align-items: center; gap: 8px"><span style="width: 9px; height: 9px; border-radius: 50%; background: {{p.nat.fill}}"></span>{{p.nat.text}}</span></div>
+<div><span class="ml">Stopa bezrobocia VI 2026</span><span style="display: inline-flex; align-items: center; gap: 8px"><span style="width: 9px; height: 9px; border-radius: 50%; background: {{p.un.fill}}"></span>{{p.un.text}}</span></div>
+<div><span class="ml">Podmioty REGON r/r</span><span style="display: inline-flex; align-items: center; gap: 8px"><span style="width: 9px; height: 9px; border-radius: 50%; background: {{p.rg.fill}}"></span>{{p.rg.text}}</span></div>
+</div>
+</sc-for>
+<p style="margin: 12px 0 0; font-size: 12.5px; line-height: 1.6; color: #536077">Progi: stopa bezrobocia ≥ 8,0% (czerwony), ≤ 4,5% (zielony); przyrost naturalny ≤ −6,5‰ (czerwony), ≥ −4,5‰ (zielony); udział 65+ ponad 1,5 pp powyżej średniej regionu (21,6%) czerwony, ponad 1,5 pp poniżej zielony; REGON r/r poniżej 100% czerwony, od 102% zielony. Progi są założeniem roboczym.</p>
+</div>
+</div>
+<div style="background: #FBE5E3; border-radius: 10px; padding: 20px 24px; display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 15px; font-weight: 600; color: #B3261E">Do pogłębionej analizy</span>
+<span style="font-size: 14.5px; line-height: 1.55; color: #1B2433">{{focus}}</span>
+</div>
+</section>
+
+</main>
+</div>
+</template>
+<script>
+const PAGES = {};
+class DCLogic { constructor(){ this.props = {}; this.state = {}; } setState(){} }
+(function(){
+const ST = {
+  g: { label: 'Rozwój', arrow: '↑', fill: '#2E8B57', bg: '#E6F3EC', tx: '#1D6B3F' },
+  y: { label: 'Stagnacja', arrow: '→', fill: '#F4B400', bg: '#FDF3D3', tx: '#7A5600' },
+  r: { label: 'Regres', arrow: '↓', fill: '#D93025', bg: '#FBE5E3', tx: '#B3261E' }
+};
+const fmt = (s) => (s > 0 ? '+' : s < 0 ? '−' : '') + Math.abs(s).toFixed(2).replace('.', ',');
+const clamp = (x) => Math.max(-1, Math.min(1, x));
+const statusOf = (s) => (s > 0.25 ? 'g' : s < -0.25 ? 'r' : 'y');
+const goodColor = (g) => (g === true ? '#1D6B3F' : g === false ? '#B3261E' : '#536077');
+
+const SERIES = {
+  unemp: [4.9,5.0,4.9,4.7,4.7,4.8,5.1,5.3,5.4,5.5,5.6,5.7,6.1,6.2,6.2,6.1,6.0,6.0],
+  emp: [122.4,122.9,123.0,123.1,122.8,122.8,122.7,122.6,122.6,122.6,122.3,122.3,121.2,122.2,122.1,121.7,121.9,121.9],
+  regon: [134.5,134.7,135.0,135.2,135.4,135.7,136.0,136.2,136.6,137.0,137.1,136.8,136.7,136.9,137.1,137.2,137.4,137.7],
+  wage: [7667.19,7564.00,7686.57,7921.00,7775.90,7800.20,8026.85,8065.27,7861.12,8006.55,8182.03,8585.84,8062.38,7999.40,8157.58,8411.20,8178.60,8257.16],
+  dw: [345,472,472,247,287,291,1021,412,419,425,293,455,238,363,506,388,301,362],
+  ind: [95.3,95.6,112.6,102.3,105.3,102.3,106.3,104.5,111.8,104.7,99.6,104.5,97.3,101.9,96.6,104.8,103.5,106.8]
+};
+function spark(arr) {
+  const mn = Math.min(...arr), mx = Math.max(...arr), n = arr.length;
+  const ys = arr.map((v) => 90 - ((v - mn) / (mx - mn || 1)) * 80);
+  return { points: arr.map((v, i) => (i / (n - 1)) * 100 + ',' + ys[i]).join(' '), endTop: ys[n - 1] };
+}
+
+class Component extends DCLogic {
+  renderVals() {
+    // zmiana r/r (w %), próg istotności, odwrócenie kierunku
+    const V = [
+      { k: 'pop', area: 'dem', ch: -0.64, thr: 1 },
+      { k: 'birth', area: 'dem', ch: -6.9, thr: 10 },
+      { k: 'unemp', area: 'lab', ch: 25.0, thr: 10, inv: true },
+      { k: 'emp', area: 'lab', ch: -0.73, thr: 3 },
+      { k: 'offers', area: 'lab', ch: 18.18, thr: 25 },
+      { k: 'wage', area: 'lab', ch: 5.86, thr: 10 },
+      { k: 'regon', area: 'eco', ch: 1.5, thr: 3 },
+      { k: 'inv', area: 'eco', ch: 13.73, thr: 10 },
+      { k: 'ind', area: 'ind', ch: 6.8, thr: 10 },
+      { k: 'retail', area: 'trd', ch: 15.9, thr: 20 },
+      { k: 'constr', area: 'bld', ch: -43.4, thr: 20 },
+      { k: 'dw', area: 'bld', ch: 27.39, thr: 25 }
+    ];
+    V.forEach((v) => { v.s = clamp(v.ch / v.thr) * (v.inv ? -1 : 1); });
+    const byK = {}; V.forEach((v) => { byK[v.k] = v; });
+    const mean = V.reduce((a, v) => a + v.s, 0) / V.length;
+    const idx = 50 + 50 * mean;
+    const iSt = idx > 60 ? 'g' : idx < 40 ? 'r' : 'y';
+    const index = { value: String(Math.round(idx)), pos: idx.toFixed(1), ...ST[iSt] };
+
+    const AREAS = [
+      { a: 'dem', name: 'Demografia', drv: 'ludność −0,6% r/r, urodzenia −6,9% (dane za 2025 r.)' },
+      { a: 'lab', name: 'Rynek pracy', drv: 'rejestrowani bezrobotni +24,7% r/r, ale płace +5,9% i oferty pracy +18,2%' },
+      { a: 'eco', name: 'Gospodarka', drv: 'podmioty REGON +1,5% r/r, nakłady inwestycyjne +13,7% (II kw.)' },
+      { a: 'ind', name: 'Przemysł', drv: 'produkcja sprzedana w czerwcu +6,8% r/r' },
+      { a: 'trd', name: 'Handel', drv: 'sprzedaż detaliczna w czerwcu +15,9% r/r (ceny bieżące)' },
+      { a: 'bld', name: 'Budownictwo i mieszkalnictwo', drv: 'produkcja budowlano-montażowa −43,4% r/r (VI), mieszkania oddane +27,4% (II kw.)' }
+    ].map((o) => {
+      const vs = V.filter((v) => v.area === o.a);
+      const s = vs.reduce((x, v) => x + v.s, 0) / vs.length;
+      return { name: o.name, drv: o.drv, s, score: fmt(s), st: statusOf(s) };
+    });
+    const col = (st, title) => ({ title, ...ST[st], items: AREAS.filter((a) => a.st === st) });
+    const signalCols = [col('g', 'Rozwijają się'), col('y', 'Stabilne'), col('r', 'Pogarszają się')];
+
+    const mk = (key, area, name, value, unit, d1l, d1, d1g, d2l, d2, d2g, note, ser) => {
+      const st = statusOf(byK[key].s);
+      const sp = ser ? spark(SERIES[ser]) : null;
+      return {
+        area, name, value, unit, d1l, d1, d1c: goodColor(d1g), d2l, d2, d2c: goodColor(d2g), note,
+        ...ST[st], hasSpark: !!sp, spark: sp ? sp.points : '', endTop: sp ? sp.endTop.toFixed(1) : '0'
+      };
+    };
+    const tiles = [
+      mk('pop', 'Ludność', 'Liczba ludności', '963,6', 'tys. (XII 2025)', 'kw./kw.', 'dane roczne', null, 'r/r', '−0,6%', false, 'Przyrost naturalny 2025: −5 384 (−5,57‰). Saldo migracji: brak w biuletynie.', null),
+      mk('unemp', 'Rynek pracy', 'Stopa bezrobocia rejestrowanego', '6,0', '% (VI 2026)', 'vs III', '−0,2 pp', true, 'r/r', '+1,2 pp', false, 'Zarejestrowani: 21,4 tys. (+24,7% r/r); 21 bezrobotnych na 1 ofertę pracy.', 'unemp'),
+      mk('emp', 'Rynek pracy', 'Przeciętne zatrudnienie w przedsiębiorstwach', '121,9', 'tys. (VI 2026)', 'vs III', '−0,2%', null, 'r/r', '−0,7%', false, 'Wskaźnik zatrudnienia (BAEL) w II kw.: 55,7% wobec 55,5% rok wcześniej.', 'emp'),
+      mk('regon', 'Gospodarka', 'Podmioty gospodarki narodowej (REGON)', '137 698', 'podmiotów (30 VI)', 'vs III', '+0,4%', true, 'r/r', '+1,5%', true, 'Bez osób prowadzących gospodarstwa indywidualne w rolnictwie.', 'regon'),
+      mk('wage', 'Wynagrodzenia', 'Przeciętne wynagrodzenie brutto', '8 257', 'zł (VI 2026)', 'vs III', '+1,2%', true, 'r/r', '+5,9%', true, 'Sektor przedsiębiorstw. W I kw. płace +5,7% r/r przy inflacji CPI +2,4%.', 'wage'),
+      mk('dw', 'Mieszkalnictwo', 'Mieszkania oddane do użytkowania', '1 051', 'mieszkań (II kw.)', 'vs I kw.', '−5,1%', false, 'r/r', '+27,4%', true, 'I kw.: 1 107 (−14,1% r/r). Pozwolenia I–VI: 3 485 (+35,2% r/r).', 'dw'),
+      mk('ind', 'Przemysł', 'Produkcja sprzedana przemysłu', '+6,8%', 'r/r (VI 2026)', 'm/m', '+1,2%', true, 'I–VI r/r', '+2,5%', true, 'Polska w I–VI: +3,9% r/r. Produkcja na mieszkańca: 27,8 tys. zł (Polska 32,3 tys. zł).', 'ind'),
+      mk('inv', 'Gospodarka', 'Nakłady inwestycyjne przedsiębiorstw', '598,6', 'mln zł (II kw.)', 'vs I kw.', '+19,3%', true, 'r/r', '+13,7%', true, 'I–VI: 1 100 mln zł (+8,9% r/r), ceny bieżące.', null)
+    ];
+
+    const chain = [
+      { step: 'STAN', head: '963,6 tys. mieszkańców', text: 'Stan na 31 XII 2025 r. Miasta: 63,9% ludności. Zgonów 10 829, urodzeń 5 445.', color: '#0B3D91' },
+      { step: 'TREND', head: 'Ludność maleje o 0,6% rocznie', text: 'Przyrost naturalny −5 384 (−5,57‰), liczba urodzeń −6,9% r/r. W 2023 r. mieszkańców było 975,0 tys.', color: '#0B3D91' },
+      { step: 'PRZYCZYNA', head: 'Starzenie się ludności', text: '21,6% mieszkańców ma 65+ lat. Na 100 osób w wieku produkcyjnym przypada 72 w wieku nieprodukcyjnym.', color: '#0B3D91' },
+      { step: 'SKUTEK', head: 'Rynek pracy słabnie', text: 'Zatrudnienie w przedsiębiorstwach −0,7% r/r, rejestrowani bezrobotni +24,7%; na 1 ofertę pracy przypada 21 osób (rok temu 18).', color: '#D93025' },
+      { step: 'WNIOSEK', head: 'Gospodarka rośnie mimo demografii', text: 'Firmy +1,5%, płace +5,9%, inwestycje +13,7% (II kw.). Czy do ubytku ludności dokłada się migracja – pokaże dopiero saldo migracji z BDL.', color: '#2E8B57' }
+    ];
+
+    return { index, signalCols, tiles, chain };
+  }
+}
+
+PAGES['Main.dc.html']=new Component().renderVals();})();
+(function(){
+const GOOD = '#1D6B3F', BAD = '#B3261E', NEU = '#536077';
+const NAVY = '#0B3D91', RED = '#D93025';
+const MON = ['sty','lut','mar','kwi','maj','cze','lip','sie','wrz','paź','lis','gru'];
+const pl = (x, d) => Number(x).toFixed(d).replace('.', ',').replace('-', '−');
+const spc = (n) => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ' ').replace('-', '−');
+
+function line(o) {
+  const n = o.ys.length;
+  const xs = o.xs || o.ys.map((_, i) => (n === 1 ? 0 : i / (n - 1)));
+  const Y = (v) => 100 - ((v - o.min) / (o.max - o.min)) * 100;
+  const pts = o.ys.map((v, i) => (xs[i] * 100).toFixed(2) + ',' + Y(v).toFixed(2)).join(' ');
+  const out = {
+    title: o.title, unit: o.unit, note: o.note || '',
+    points: pts, extPoints: '0,0',
+    grid: o.ticks.map((t) => ({ top: Y(t).toFixed(1), label: o.tickFmt ? o.tickFmt(t) : String(t) })),
+    xt: o.xt, dots: [], dotLabels: [], hits: [], hasEnd: !o.dots,
+    endTop: Y(o.ys[n - 1]).toFixed(1), endLabel: o.endLabel
+  };
+  if (o.ext) {
+    out.extPoints = o.ext.map((p) => (p[0] * 100).toFixed(2) + ',' + Y(p[1]).toFixed(2)).join(' ');
+  }
+  if (o.dots) {
+    out.dots = o.ys.map((v, i) => ({ left: (xs[i] * 100).toFixed(2), top: Y(v).toFixed(1), tip: o.tips[i], fill: NAVY }));
+    if (o.extDot) out.dots.push({ left: (o.extDot[0] * 100).toFixed(2), top: Y(o.extDot[1]).toFixed(1), tip: o.extDot[2], fill: '#FFFFFF' });
+    out.dotLabels = out.dots.map((d, i) => ({ left: d.left, top: d.top, label: o.dotLabels[i] }));
+  } else {
+    out.hits = o.ys.map((v, i) => ({ tip: o.tips[i] }));
+  }
+  return out;
+}
+function monthTips(ys, f, unit) {
+  return ys.map((v, i) => {
+    const y = 2023 + Math.floor(i / 12), m = i % 12;
+    return MON[m] + ' ' + y + ': ' + f(v) + (unit || '');
+  });
+}
+const YEAR_XT = [0, 12, 24, 36].map((i) => ({ left: (i / 41 * 100).toFixed(1), label: String(2023 + i / 12) }));
+
+function bars(o) {
+  const n = o.vals.length, step = 100 / n;
+  const P = (v) => ((v - o.min) / (o.max - o.min)) * 100;
+  const bp = P(o.base);
+  return {
+    title: o.title, unit: o.unit, note: o.note,
+    baseTop: (100 - bp).toFixed(1),
+    grid: o.ticks.map((t) => ({ top: (100 - P(t)).toFixed(1), label: o.tickFmt ? o.tickFmt(t) : String(t) })),
+    bars: o.vals.map((v, i) => {
+      const p = P(v);
+      return {
+        left: (i * step + step * 0.14).toFixed(2), w: (step * 0.72).toFixed(2),
+        bottom: Math.min(p, bp).toFixed(2), h: Math.max(Math.abs(p - bp), 0.4).toFixed(2),
+        fill: v >= o.base ? NAVY : RED, tip: o.tips[i]
+      };
+    }),
+    xt: o.xt.map((x) => ({ left: ((x.i + 0.5) * step).toFixed(1), label: x.label }))
+  };
+}
+const RM = ['I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII'];
+const tipsFrom = (start, vals, f) => vals.map((v, i) => {
+  const k = start + i; return RM[k % 12] + ' ' + (2025 + Math.floor(k / 12)) + ': ' + f(v);
+});
+const XT18 = [{ i: 0, label: 'I 2025' }, { i: 6, label: 'VII 2025' }, { i: 12, label: 'I 2026' }];
+
+class Component extends DCLogic {
+  renderVals() {
+    // ---------- DEMOGRAFIA ----------
+    const popLine = line({
+      title: 'Liczba ludności (31 XII)', unit: 'tys. osób',
+      ys: [975.023, 969.819, 963.601], xs: [0, 1 / 12, 2 / 12],
+      ext: [[2 / 12, 963.601], [1, 906.491]],
+      extDot: [1, 906.491, '2035: ok. 906 tys. (ekstrapolacja liniowa, nie prognoza GUS)'],
+      min: 900, max: 980, ticks: [900, 920, 940, 960, 980],
+      tips: ['2023: 975,0 tys.', '2024: 969,8 tys.', '2025: 963,6 tys.'],
+      dots: true, dotLabels: ['975,0', '', '963,6', '≈906 (2035)'],
+      xt: [{ left: 0, label: '2023' }, { left: 16.7, label: '2025' }, { left: 100, label: '2035' }],
+      note: 'Linia przerywana to prosta ekstrapolacja trendu 2023–2025 (−5,7 tys. rocznie), a nie prognoza GUS. Trend 10-letni i prognoza do 2035 r. wymagają szeregów z BDL.'
+    });
+    const age = [
+      { name: '0–17 lat: 166,2 tys.', share: 17.25, fill: '#5D82C4', pct: '17,2%', tip: 'Wiek przedprodukcyjny: 166 208 osób' },
+      { name: '18–59/64 lata: 559,3 tys.', share: 58.04, fill: NAVY, pct: '58,0%', tip: 'Wiek produkcyjny: 559 317 osób' },
+      { name: '60/65+: 238,1 tys.', share: 24.71, fill: '#2B2F3A', pct: '24,7%', tip: 'Wiek poprodukcyjny: 238 076 osób' }
+    ];
+    const dem = {
+      stats: [
+        { label: 'Liczba ludności', value: '963,6 tys.', sub: '−0,6% r/r', color: BAD },
+        { label: 'Przyrost naturalny 2025', value: '−5 384', sub: '−5,57‰ (2024: −4,95‰)', color: BAD },
+        { label: 'Urodzenia żywe', value: '5 445', sub: '5,63‰, −6,9% r/r', color: BAD },
+        { label: 'Zgony', value: '10 829', sub: '11,21‰, +1,6% r/r', color: BAD },
+        { label: 'Udział ludności 65+', value: '21,6%', sub: '208,2 tys. osób', color: NEU },
+        { label: 'Obciążenie demograficzne', value: '72', sub: 'na 100 osób w wieku produkcyjnym', color: NEU },
+        { label: 'Saldo migracji', value: 'brak', sub: 'nie ma w biuletynie (BDL GUS)', color: NEU }
+      ],
+      links: [
+        { head: 'Spadek ludności → spadek liczby uczniów', text: 'Liczby uczniów nie ma w biuletynie. Baza: 159,4 tys. osób w wieku 3–18 lat oraz 17,7 tys. dzieci w wieku 0–2 lata.' },
+        { head: 'Starzenie się → zapotrzebowanie na ochronę zdrowia', text: 'Osób 65+ jest 208,2 tys. (21,6%). Zasoby ochrony zdrowia (lekarze, łóżka) wymagają danych spoza biuletynu.' },
+        { head: 'Migracje → rynek pracy', text: 'Saldo migracji: brak w biuletynie. W wieku produkcyjnym jest 559,3 tys. osób (58,0% ludności), a przeciętne zatrudnienie w przedsiębiorstwach spada o 0,7% r/r.' }
+      ],
+      lines: [popLine], age
+    };
+
+    // ---------- RYNEK PRACY ----------
+    const unemp = [4.8,4.8,4.7,4.5,4.3,4.2,4.2,4.3,4.3,4.3,4.3,4.3, 4.7,4.7,4.6,4.5,4.4,4.3,4.3,4.4,4.3,4.3,4.4,4.5, 4.9,5.0,4.9,4.7,4.7,4.8,5.1,5.3,5.4,5.5,5.6,5.7, 6.1,6.2,6.2,6.1,6.0,6.0];
+    const wageYY = [116.6,118.0,115.2,112.8,111.8,111.1,111.1,112.1,109.8,110.9,111.3,106.5, 112.9,112.1,111.4,111.2,112.3,109.8,110.5,110.7,109.4,111.6,111.4,109.6, 107.3,107.5,106.7,109.2,107.6,108.3,108.4,109.4,107.6,107.4,109.3,110.0, 105.2,105.8,106.1,106.2,105.2,105.9].map((v) => +(v - 100).toFixed(1));
+    const lab = {
+      stats: [
+        { label: 'Stopa bezrobocia', value: '6,0%', sub: '+1,2 pp r/r · Polska 5,8%', color: BAD },
+        { label: 'Bezrobotni zarejestrowani', value: '21,4 tys.', sub: '+24,7% r/r · 85,3% bez prawa do zasiłku', color: BAD },
+        { label: 'Oferty pracy (zgłoszone w VI)', value: '936', sub: '+18,2% r/r', color: GOOD },
+        { label: 'Bezrobotni na 1 ofertę', value: '21', sub: 'rok temu: 18', color: BAD },
+        { label: 'Przeciętne zatrudnienie', value: '121,9 tys.', sub: '−0,7% r/r', color: BAD },
+        { label: 'Wskaźnik zatrudnienia (BAEL)', value: '55,7%', sub: 'II kw. 2025: 55,5%', color: GOOD },
+        { label: 'Przeciętne wynagrodzenie', value: '8 257 zł', sub: '+5,9% r/r', color: GOOD },
+        { label: 'Bezrobotni do 25 lat / 55+', value: '2 712 / 3 394', sub: '12,7% / 15,9% zarejestrowanych', color: NEU }
+      ],
+      links: [
+        { head: 'Wynagrodzenia ↔ migracje', text: 'Przeciętne wynagrodzenie w przemyśle I–VI: 8 352 zł, czyli 90,9% średniej krajowej (12. miejsce wśród 16 województw). Salda migracji w biuletynie nie ma.' },
+        { head: 'Bezrobocie ↔ liczba firm', text: 'Firm przybywa (+1,5% r/r), a rejestrowanych bezrobotnych też (+24,7%). Przyrost podmiotów w REGON nie przekłada się na spadek bezrobocia.' },
+        { head: 'Zatrudnienie ↔ produkcja przemysłowa', text: 'Produkcja sprzedana przemysłu I–VI: +2,5% r/r, zatrudnienie w przemyśle: −2,7% (65 tys. osób). Produkcja rośnie bez wzrostu zatrudnienia.' }
+      ],
+      lines: [
+        line({ title: 'Stopa bezrobocia rejestrowanego', unit: '%, koniec miesiąca', ys: unemp, min: 4, max: 6.5, ticks: [4, 5, 6], tickFmt: (t) => pl(t, 1), tips: monthTips(unemp, (v) => pl(v, 1), '%'), xt: YEAR_XT, endLabel: '6,0%', note: 'Najniższy poziom w okresie: 4,2% (VI–VII 2023). Szczyt: 6,2% (II–III 2026).' }),
+        line({ title: 'Dynamika wynagrodzeń brutto (sektor przedsiębiorstw)', unit: 'wzrost r/r, %', ys: wageYY, min: 4, max: 19, ticks: [5, 10, 15], tickFmt: (t) => t + '%', tips: monthTips(wageYY, (v) => '+' + pl(v, 1), '%'), xt: YEAR_XT, endLabel: '+5,9%', note: 'Tempo wzrostu płac nominalnych hamuje: z ponad 10% w latach 2023–2024 do ok. 6% w 2026 r.' })
+      ]
+    };
+
+    // ---------- GOSPODARKA ----------
+    const regon = [127.5,127.8,128.0,128.4,128.7,129.1,129.3,129.7,130.0,130.4,130.7,130.7, 130.7,131.3,131.6,131.8,132.2,132.6,132.9,133.3,133.8,134.1,134.4,134.4, 134.5,134.7,135.0,135.2,135.4,135.7,136.0,136.2,136.6,137.0,137.1,136.8, 136.7,136.9,137.1,137.2,137.4,137.7];
+    const SEC = [
+      ['Rolnictwo, leśnictwo, rybactwo', 3085, 3049], ['Przemysł', 10408, 10503], ['Budownictwo', 24644, 24866],
+      ['Handel; naprawa pojazdów', 24980, 24653], ['Transport i magazynowanie', 8808, 8727], ['Zakwaterowanie i gastronomia', 3682, 3703],
+      ['Informacja i komunikacja', 3538, 3613], ['Finanse i ubezpieczenia', 3091, 3127], ['Obsługa rynku nieruchomości', 13148, 13233],
+      ['Działalność profesjonalna i techniczna', 10059, 10132], ['Administrowanie i działalność wspierająca', 5027, 5268],
+      ['Administracja publiczna', 716, 716], ['Edukacja', 4063, 4148], ['Opieka zdrowotna i pomoc społeczna', 7696, 7817],
+      ['Kultura, rozrywka, rekreacja', 2378, 2354], ['Pozostała działalność usługowa', 11326, 11569]
+    ].map((s) => ({ name: s[0], d: s[2] - s[1], pct: (s[2] / s[1] - 1) * 100 })).sort((a, b) => b.d - a.d);
+    const maxAbs = Math.max(...SEC.map((s) => Math.abs(s.d)));
+    const sections = SEC.map((s) => {
+      const w = (Math.abs(s.d) / maxAbs) * 50;
+      return {
+        name: s.name, label: (s.d > 0 ? '+' : s.d < 0 ? '−' : '') + Math.abs(s.d), w: w.toFixed(1),
+        left: (s.d >= 0 ? 50 : 50 - w).toFixed(1), fill: s.d >= 0 ? NAVY : RED, tx: s.d < 0 ? BAD : '#1B2433',
+        tip: s.name + ': ' + (s.d >= 0 ? '+' : '−') + Math.abs(s.d) + ' podmiotów (' + (s.pct >= 0 ? '+' : '−') + pl(Math.abs(s.pct), 1) + '%)'
+      };
+    });
+    const eco = {
+      stats: [
+        { label: 'Podmioty w REGON', value: '137 698', sub: '+1,5% r/r · +0,4% vs III', color: GOOD },
+        { label: 'Osoby fizyczne prowadzące działalność', value: '97 529', sub: '70,8% wszystkich podmiotów', color: NEU },
+        { label: 'Spółki handlowe', value: '13 357', sub: 'w tym 1 652 z kapitałem zagranicznym', color: NEU },
+        { label: 'Nakłady inwestycyjne I–VI', value: '1 100 mln zł', sub: '+8,9% r/r · II kw. +13,7%', color: GOOD },
+        { label: 'Przychody przedsiębiorstw I–VI', value: '35,7 mld zł', sub: '+4,4% r/r', color: GOOD },
+        { label: 'Wynik finansowy netto I–VI', value: '1 117 mln zł', sub: '−24,3% r/r', color: BAD },
+        { label: 'Nowe i likwidowane firmy, eksport', value: 'brak', sub: 'nie ma w biuletynie', color: NEU }
+      ],
+      links: [
+        { head: 'Liczba firm → miejsca pracy', text: 'Podmiotów przybywa o 1,5% r/r, a przeciętne zatrudnienie w przedsiębiorstwach spada o 0,7%. Szybciej rośnie liczba osób prawnych i jednostek organizacyjnych (+2,6% r/r) niż działalności osób fizycznych (+1,0%).' },
+        { head: 'Inwestycje → wynagrodzenia', text: 'Nakłady inwestycyjne I–VI +8,9% (maszyny i urządzenia +14,0%, budynki +3,4%), płace +5,9% r/r. Maszyny i urządzenia to 59% nakładów.' },
+        { head: 'Wynik finansowy: dlaczego netto spada mimo wyższych przychodów', text: 'Wynik ze sprzedaży rośnie o 10,1% (1 309 vs 1 189 mln zł), ale przychody finansowe spadły o 454 mln zł (204 vs 659 mln zł), co obniża wynik brutto o 17,3%.' },
+        { head: 'Eksport → produkcja', text: 'Danych o eksporcie w biuletynie nie ma.' }
+      ],
+      lines: [line({ title: 'Podmioty gospodarki narodowej w REGON', unit: 'tys., koniec miesiąca', ys: regon, min: 126, max: 140, ticks: [128, 132, 136, 140], tips: monthTips(regon, (v) => pl(v, 1), ' tys.'), xt: YEAR_XT, endLabel: '137,7 tys.', note: 'Bez osób prowadzących gospodarstwa indywidualne w rolnictwie. Od końca 2023 r. przybyło ok. 7 tys. podmiotów.' })],
+      sections
+    };
+
+    // ---------- PRZEMYSŁ ----------
+    const indYY = [95.3,95.6,112.6,102.3,105.3,102.3,106.3,104.5,111.8,104.7,99.6,104.5,97.3,101.9,96.6,104.8,103.5,106.8];
+    const ind = {
+      stats: [
+        { label: 'Produkcja sprzedana I–VI', value: '26,8 mld zł', sub: '+2,5% r/r · Polska +3,9%', color: GOOD },
+        { label: 'Produkcja w czerwcu', value: '+6,8% r/r', sub: 'przetwórstwo +7,7% r/r', color: GOOD },
+        { label: 'Produkcja na mieszkańca I–VI', value: '27,8 tys. zł', sub: 'Polska 32,3 tys. zł (86%)', color: NEU },
+        { label: 'Zatrudnienie w przemyśle', value: '65 tys.', sub: '−2,7% r/r', color: BAD },
+        { label: 'Wynagrodzenie w przemyśle', value: '8 352 zł', sub: '+5,5% r/r · Polska 9 192 zł', color: NEU }
+      ],
+      links: [
+        { head: 'Przemysł → rynek pracy', text: 'Produkcja rośnie (+2,5%), zatrudnienie w przemyśle spada (−2,7%): produkcja rośnie bez przyrostu miejsc pracy.' },
+        { head: 'Przemysł → eksport', text: 'Danych o eksporcie w biuletynie nie ma.' },
+        { head: 'Przemysł → dochody mieszkańców', text: 'Płace w przemyśle +5,5% r/r, podobnie jak ogółem w przedsiębiorstwach (+5,9% w VI).' }
+      ],
+      bars: [bars({
+        title: 'Produkcja sprzedana przemysłu', unit: 'zmiana r/r, %', vals: indYY, base: 100, min: 88, max: 116, ticks: [90, 100, 110],
+        tickFmt: (t) => (t - 100 >= 0 ? '+' : '−') + Math.abs(t - 100) + '%',
+        tips: tipsFrom(0, indYY, (v) => (v >= 100 ? '+' : '−') + pl(Math.abs(v - 100), 1) + '% r/r'),
+        xt: XT18, note: 'Słupek powyżej linii = wzrost względem tego samego miesiąca rok wcześniej. W II kw. trzy miesiące z rzędu wzrostu.'
+      })]
+    };
+
+    // ---------- BUDOWNICTWO ----------
+    const dw = [345,472,472,247,287,291,1021,412,419,425,293,455,238,363,506,388,301,362];
+    const constr = [115.0, 50.2, 89.4, 57.0, 72.1, 56.6];
+    const bld = {
+      stats: [
+        { label: 'Pozwolenia i zgłoszenia I–VI', value: '3 485', sub: '+35,2% r/r (na sprzedaż lub wynajem +60,4%)', color: GOOD },
+        { label: 'Rozpoczęte budowy I–VI', value: '2 255', sub: '+2,8% r/r', color: GOOD },
+        { label: 'Mieszkania oddane I–VI', value: '2 158', sub: '+2,2% r/r · 185,6 tys. m²', color: GOOD },
+        { label: 'Oddane na 1000 mieszkańców', value: '2,2', sub: 'Polska 2,5', color: NEU },
+        { label: 'Produkcja budowlano-montażowa I–VI', value: '1 544 mln zł', sub: '−13,7% r/r · Polska +3,3%', color: BAD },
+        { label: 'Ceny mieszkań, dostępność', value: 'brak', sub: 'nie ma w biuletynie', color: NEU }
+      ],
+      links: [
+        { head: 'Wynagrodzenia ↔ ceny mieszkań', text: 'Ceny mieszkań w biuletynie nie występują, więc dostępności nie da się policzyć. Płace rosną o 5,9% r/r.' },
+        { head: 'Migracje ↔ budownictwo', text: 'Pozwoleń przybywa o 35,2%, choć ludność maleje. Ponad połowa oddanych mieszkań (1 171 z 2 158) trafia na sprzedaż lub wynajem.' }
+      ],
+      bars: [
+        bars({ title: 'Mieszkania oddane do użytkowania', unit: 'mieszkania w miesiącu', vals: dw, base: 0, min: 0, max: 1100, ticks: [0, 500, 1000], tips: tipsFrom(0, dw, (v) => v + ' mieszkań'), xt: XT18, note: 'Wyraźny szczyt w lipcu 2025 r. (1 021). II kw. 2026: 1 051 mieszkań wobec 825 rok wcześniej.' }),
+        bars({ title: 'Produkcja budowlano-montażowa', unit: 'zmiana r/r, %, 2026', vals: constr, base: 100, min: 40, max: 120, ticks: [50, 100], tickFmt: (t) => (t - 100 >= 0 ? '+' : '−') + Math.abs(t - 100) + '%', tips: tipsFrom(12, constr, (v) => (v >= 100 ? '+' : '−') + pl(Math.abs(v - 100), 1) + '% r/r'), xt: [{ i: 0, label: 'I' }, { i: 2, label: 'III' }, { i: 5, label: 'VI' }], note: 'Od lutego sprzedaż produkcji budowlano-montażowej jest o 11–50% niższa niż rok wcześniej (ceny bieżące).' })
+      ]
+    };
+
+    const gaps = [
+      { name: 'Edukacja', need: 'liczba uczniów, liczba studentów, absolwenci, kierunki STEM', have: 'ludność w wieku 3–18 lat: 159,4 tys. (3–6: 32,7; 7–12: 60,4; 13–15: 32,4; 16–18: 34,0 tys.).' },
+      { name: 'Zdrowie', need: 'liczba lekarzy, liczba pielęgniarek, łóżka szpitalne, długość życia', have: 'ludność 65+: 208,2 tys. (21,6%); zgony 2025: 10 829; zgony niemowląt: 15.' },
+      { name: 'Środowisko', need: 'emisja zanieczyszczeń, tereny zielone, odpady komunalne, OZE', have: 'brak danych do powiązania w tym biuletynie.' }
+    ];
+
+    return { dem, lab, eco, ind, bld, gaps };
+  }
+}
+
+PAGES['Moduly.dc.html']=new Component().renderVals();})();
+(function(){
+const ST = {
+  g: { label: 'Brak zagrożeń', arrow: '↑', fill: '#2E8B57', bg: '#E6F3EC', tx: '#1D6B3F' },
+  y: { label: 'Obserwacja', arrow: '→', fill: '#F4B400', bg: '#FDF3D3', tx: '#7A5600' },
+  r: { label: 'Alarm', arrow: '↓', fill: '#D93025', bg: '#FBE5E3', tx: '#B3261E' }
+};
+const GOOD = '#1D6B3F', BAD = '#B3261E', NEU = '#536077';
+const FILL = { g: '#2E8B57', y: '#F4B400', r: '#D93025' };
+const pl = (x, d) => Number(x).toFixed(d).replace('.', ',').replace('-', '−');
+const spc = (n) => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+
+class Component extends DCLogic {
+  renderVals() {
+    // ---- napędy ----
+    const drivers = [
+      {
+        title: 'Silniki wzrostu', fill: '#2E8B57', bg: '#E6F3EC', tx: '#1D6B3F', arrow: '↑',
+        rule: 'Rosną jednocześnie wynagrodzenia, liczba przedsiębiorstw i inwestycje: wszystkie trzy wskaźniki z koncepcji są dodatnie.',
+        items: [
+          { name: 'Wynagrodzenia', sub: 'przeciętne brutto, VI 2026, r/r', value: '+5,9%', color: GOOD },
+          { name: 'Liczba przedsiębiorstw', sub: 'podmioty REGON, 30 VI 2026, r/r', value: '+1,5%', color: GOOD },
+          { name: 'Inwestycje', sub: 'nakłady przedsiębiorstw, II kw. 2026, r/r', value: '+13,7%', color: GOOD },
+          { name: 'Sprzedaż detaliczna (dodatkowo)', sub: 'czerwiec 2026, r/r, ceny bieżące', value: '+15,9%', color: GOOD },
+          { name: 'Produkcja przemysłowa (dodatkowo)', sub: 'czerwiec 2026, r/r', value: '+6,8%', color: GOOD }
+        ]
+      },
+      {
+        title: 'Bariery rozwoju', fill: '#D93025', bg: '#FBE5E3', tx: '#B3261E', arrow: '↓',
+        rule: 'Spadają liczba mieszkańców i liczba urodzeń. Trzeciego wskaźnika, liczby uczniów, biuletyn nie zawiera.',
+        items: [
+          { name: 'Liczba mieszkańców', sub: '31 XII 2025, r/r', value: '−0,6%', color: BAD },
+          { name: 'Liczba urodzeń', sub: '2025, r/r', value: '−6,9%', color: BAD },
+          { name: 'Liczba uczniów', sub: 'brak w biuletynie', value: 'brak', color: NEU },
+          { name: 'Rejestrowani bezrobotni (dodatkowo)', sub: 'czerwiec 2026, r/r', value: '+24,7%', color: BAD },
+          { name: 'Produkcja budowlano-montażowa (dodatkowo)', sub: 'czerwiec 2026, r/r', value: '−43,4%', color: BAD }
+        ]
+      }
+    ];
+
+    // ---- relacje ----
+    const RL = { yes: { label: 'Potwierdza się', fill: '#2E8B57', bg: '#E6F3EC', tx: '#1D6B3F' }, no: { label: 'Nie potwierdza się', fill: '#D93025', bg: '#FBE5E3', tx: '#B3261E' }, part: { label: 'Częściowo', fill: '#F4B400', bg: '#FDF3D3', tx: '#7A5600' } };
+    const relations = [
+      { rel: 'Liczba firm → miejsca pracy', a: 'REGON +1,5% r/r', b: 'zatrudnienie −0,7% r/r', ...RL.no },
+      { rel: 'Inwestycje → wynagrodzenia', a: 'nakłady +13,7% (II kw.)', b: 'płace +5,9% r/r', ...RL.yes },
+      { rel: 'Produkcja → zatrudnienie w przemyśle', a: 'produkcja +2,5% (I–VI)', b: 'zatrudnienie −2,7%', ...RL.no },
+      { rel: 'Wynagrodzenia → sprzedaż detaliczna', a: 'płace +5,9% r/r', b: 'sprzedaż +15,9% r/r', ...RL.yes },
+      { rel: 'Pozwolenia → mieszkania oddane', a: 'pozwolenia +35,2% (I–VI)', b: 'oddane +2,2% (I–VI)', ...RL.part },
+      { rel: 'Bezrobocie ↔ oferty pracy', a: 'bezrobotni +24,7% r/r', b: 'oferty +18,2% r/r', ...RL.part }
+    ];
+
+    // ---- alerty ----
+    const alerts = [
+      { name: 'Liczba ludności', rule: 'spadek > 1%', now: '−0,6% (XII 2025 vs XII 2024)', dir: 'drop', thr: 1, v: -0.64 },
+      { name: 'Bezrobocie (liczba zarejestrowanych)', rule: 'wzrost > 10%', now: '+24,7% r/r (VI 2026)', dir: 'rise', thr: 10, v: 24.7 },
+      { name: 'Liczba firm (REGON)', rule: 'spadek > 5%', now: '+1,5% r/r (30 VI 2026)', dir: 'drop', thr: 5, v: 1.5 },
+      { name: 'Inwestycje', rule: 'spadek > 10%', now: '+13,7% r/r (II kw. 2026)', dir: 'drop', thr: 10, v: 13.73 },
+      { name: 'Produkcja budowlano-montażowa', rule: 'spadek > 10%', now: '−43,4% r/r (VI 2026)', dir: 'drop', thr: 10, v: -43.4 },
+      { name: 'Zatrudnienie w przedsiębiorstwach', rule: 'spadek > 3%', now: '−0,7% r/r (VI 2026)', dir: 'drop', thr: 3, v: -0.73 }
+    ].map((r) => {
+      const bad = r.dir === 'drop' ? -r.v : r.v;
+      const ratio = bad / r.thr;
+      const st = ratio >= 1 ? 'r' : ratio >= 0.5 ? 'y' : 'g';
+      return { name: r.name, rule: r.rule, now: r.now, st, ...ST[st] };
+    });
+    const alertCounts = ['r', 'y', 'g'].map((k) => ({ n: alerts_count(alerts, k), ...ST[k] }));
+    function alerts_count(arr, k) { return arr.filter((a) => a.st === k).length; }
+
+    // ---- na tle kraju ----
+    const vsPoland = [
+      { name: 'Stopa bezrobocia, VI 2026', lub: '6,0%', pl: '5,8%', read: '10. najwyższa z 16 województw', color: BAD },
+      { name: 'Liczba bezrobotnych, VI 2026 vs XII 2025', lub: '+5,0%', pl: '+1,5%', read: 'szybszy wzrost niż w kraju', color: BAD },
+      { name: 'Produkcja sprzedana przemysłu, I–VI r/r', lub: '+2,5%', pl: '+3,9%', read: 'wolniej niż w kraju', color: BAD },
+      { name: 'Produkcja budowlano-montażowa, I–VI r/r', lub: '−13,7%', pl: '+3,3%', read: 'wbrew krajowi', color: BAD },
+      { name: 'Mieszkania oddane, I–VI r/r', lub: '+2,2%', pl: '+3,2%', read: 'nieco wolniej niż w kraju', color: BAD },
+      { name: 'Wynagrodzenie w przemyśle, I–VI', lub: '8 352 zł', pl: '9 192 zł', read: '90,9% średniej, 12. miejsce z 16', color: BAD }
+    ];
+
+    // ---- powiaty ----
+    const P = [
+      ['gorzowski', 74190, 12952, -5.10, 5.4, 102.3],
+      ['międzyrzecki', 53821, 11869, -7.56, 8.2, 98.1],
+      ['słubicki', 45445, 8642, -4.86, 3.6, 101.8],
+      ['strzelecko-drezdenecki', 45740, 10051, -6.33, 11.5, 101.0],
+      ['sulęciński', 32923, 6607, -7.59, 5.7, 101.4],
+      ['Gorzów Wielkopolski (miasto)', 113569, 27709, -6.03, 4.4, 101.9],
+      ['krośnieński', 51767, 11133, -4.91, 7.8, 101.0],
+      ['nowosolski', 81382, 18170, -5.80, 8.1, 102.9],
+      ['świebodziński', 53376, 11213, -4.17, 3.4, 102.3],
+      ['wschowski', 36763, 7724, -3.63, 8.0, 100.5],
+      ['zielonogórski', 74539, 14924, -5.13, 8.0, 101.9],
+      ['żagański', 72213, 16458, -6.13, 6.9, 100.5],
+      ['żarski', 89397, 19427, -7.40, 6.7, 101.7],
+      ['Zielona Góra (miasto)', 138476, 31284, -4.09, 4.3, 101.2]
+    ];
+    const cell = (st, text) => ({ fill: FILL[st], text });
+    const rows = P.map((p) => {
+      const sh = (p[2] / p[1]) * 100;
+      const s65 = sh > 23.1 ? 'r' : sh < 20.1 ? 'g' : 'y';
+      const nat = p[3] <= -6.5 ? 'r' : p[3] >= -4.5 ? 'g' : 'y';
+      const un = p[4] >= 8.0 ? 'r' : p[4] <= 4.5 ? 'g' : 'y';
+      const rg = p[5] < 100 ? 'r' : p[5] >= 102 ? 'g' : 'y';
+      const reds = [s65, nat, un, rg].filter((x) => x === 'r').length;
+      return {
+        raw: p, reds, unv: p[4],
+        name: p[0], pop: spc(p[1]),
+        s65: cell(s65, pl(sh, 1) + '%'), nat: cell(nat, pl(p[3], 2) + '‰'),
+        un: cell(un, pl(p[4], 1) + '%'), rg: cell(rg, pl(p[5] - 100, 1).replace(/^(\d)/, '+$1') + '%')
+      };
+    }).sort((a, b) => b.unv - a.unv);
+    const maxReds = Math.max(...rows.map((r) => r.reds));
+    const worst = rows.filter((r) => r.reds === maxReds).map((r) => r.name);
+    const unHigh = rows[0];
+    const focus = 'Najwięcej sygnałów alarmowych (' + maxReds + ' z 4): powiat ' + worst.join(', ') +
+      ' (stopa bezrobocia ' + pl(rows.find((r) => r.name === worst[0]).unv, 1) + '%, przyrost naturalny ' + pl(rows.find((r) => r.name === worst[0]).raw[3], 2) + '‰, liczba podmiotów spadła r/r o ' + pl(100 - rows.find((r) => r.name === worst[0]).raw[5], 1) + '%). ' +
+      'Najwyższe bezrobocie ma powiat ' + unHigh.name + ' (' + pl(unHigh.unv, 1) + '%), najniższe powiat świebodziński (3,4%).';
+
+    return { drivers, relations, alerts, alertCounts, vsPoland, powiaty: rows, focus };
+  }
+}
+
+PAGES['Napedy.dc.html']=new Component().renderVals();})();
+const SVGNS = 'http://www.w3.org/2000/svg';
+function lookup(path, scope) {
+  path = path.trim();
+  if (path === 'true') return true;
+  if (path === 'false') return false;
+  const parts = path.split('.');
+  let v;
+  for (let i = scope.length - 1; i >= 0; i--) { if (parts[0] in scope[i]) { v = scope[i][parts[0]]; break; } }
+  for (let i = 1; i < parts.length && v != null; i++) v = v[parts[i]];
+  return v;
+}
+function interp(str, scope) {
+  const m = str.match(/^\s*\{\{([^}]+)\}\}\s*$/);
+  if (m) return lookup(m[1], scope);
+  return str.replace(/\{\{([^}]+)\}\}/g, (_, p) => { const v = lookup(p, scope); return v == null ? '' : v; });
+}
+function build(node, scope, parent) {
+  if (node.nodeType === 3) {
+    const t = interp(node.nodeValue, scope);
+    parent.appendChild(document.createTextNode(t == null ? '' : String(t)));
+    return;
+  }
+  if (node.nodeType !== 1) return;
+  const tag = node.localName;
+  if (tag === 'sc-for') {
+    const list = interp(node.getAttribute('list'), scope) || [];
+    const as = node.getAttribute('as');
+    list.forEach((item, i) => {
+      const sc = scope.concat([{ [as]: item, $index: i }]);
+      node.childNodes.forEach((c) => build(c, sc, parent));
+    });
+    return;
+  }
+  if (tag === 'sc-if') {
+    if (interp(node.getAttribute('value'), scope)) node.childNodes.forEach((c) => build(c, scope, parent));
+    return;
+  }
+  const el = node.namespaceURI === SVGNS ? document.createElementNS(SVGNS, tag) : document.createElement(tag);
+  for (const a of node.attributes) {
+    if (a.name.startsWith('hint-')) continue;
+    const v = interp(a.value, scope);
+    el.setAttribute(a.name, v == null ? '' : String(v));
+  }
+  node.childNodes.forEach((c) => build(c, scope, el));
+  parent.appendChild(el);
+}
+function show(name) {
+  const app = document.getElementById('app');
+  app.replaceChildren();
+  const tpl = document.getElementById('t-' + name);
+  tpl.content.childNodes.forEach((c) => build(c, [PAGES[name]], app));
+  window.scrollTo(0, 0);
+}
+document.addEventListener('click', (e) => {
+  const a = e.target.closest('a[href]');
+  if (!a) return;
+  const h = a.getAttribute('href');
+  if (PAGES[h]) { e.preventDefault(); show(h); }
+});
+show('Main.dc.html');
+</script>
+</body>
+</html>
